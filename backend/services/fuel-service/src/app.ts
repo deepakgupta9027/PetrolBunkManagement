@@ -1,5 +1,8 @@
 import express from "express";
 import cors from "cors";
+import cors from "cors"
+import saleRoutes from "./modules/consume/presentation/routes/sale.routes.js";
+import purchaseRoutes from "./modules/purchase/presentation/routes/purchase.routes.js";
 
 const app = express();
 
@@ -39,5 +42,7 @@ app.post("/fuel/sales", (req, res) => {
   sales.push(sale);
   res.status(201).json({ message: "Fuel sale recorded", data: sale });
 });
+app.use("/api/v1/fuel", saleRoutes);
+app.use("/api/v1/fuel/purchase", purchaseRoutes);
 
 export default app;
